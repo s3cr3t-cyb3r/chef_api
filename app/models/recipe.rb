@@ -22,4 +22,11 @@ class Recipe < ApplicationRecord
         chef_name = "#{parts.last}, #{parts.first}"
         chef_name
     end
+    validates :chef, presence: true
+    validates :directions, presence: true
+    validates :ingredients, presence: true
+    validates :name, presence: true
+    validates :prep_time, presence: true
+    validates :name, uniqueness: true
+    validates :directions, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
 end
