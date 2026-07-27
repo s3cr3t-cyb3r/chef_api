@@ -37,8 +37,10 @@ class RecipesController < ApplicationController
       directions: params[:directions],
       prep_time: params[:prep_time]
     )
-
-    render json: recipe
+    if recipe.valid?
+      render json: recipe
+    else
+      render json:{errors: product.errors.full_messages}, status: :unprocessable_entity
   end
 
   def update
