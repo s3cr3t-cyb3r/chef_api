@@ -40,7 +40,8 @@ class RecipesController < ApplicationController
     if recipe.valid?
       render json: recipe
     else
-      render json:{errors: product.errors.full_messages}, status: :unprocessable_entity
+      render json: {errors: product.errors.full_messages}, status: :unprocessable_entity
+    end
   end
 
   def update
